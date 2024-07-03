@@ -114,13 +114,13 @@
 <p>在使用 typikon 程序之前请确保你计算机已经成功连接到国际互联网，如果是中国大陆地区可能会出现无法创建工作目录的情况，如果出现此类问题，可以尝试使用加速或者开启代理软件，再使用 typikon 进行目录初始化工作。</p>
 </blockquote>
 <p>当下载好 zip 二进制软件包后，请使用 <code>unzip</code> 或者其他解压软件来解压 <code>typikon-darwin-x64-beta-v0.1.1.zip</code> 软件包，命令如下：</p>
-<pre><code class="language-shell">unzip typikon-darwin-x64-beta-v0.1.1.zip -d /usr/local/typikon
+<pre><code class="language-shell">unzip typikon-darwin-x64-beta-v0.1.1.zip -d /Users/dings/devsoft
 </code></pre>
-<p>再通过手动解压二进制到指定目录中，如果你想要全局使用 typikon 程序，那么必须将 typikon 所在的路径添加到计算机操作系统的环境变量中，例如：</p>
-<pre><code class="language-shell">TYPIKON="/usr/local/typikon"
-export TYPIKON
+<p>通过手动解压二进制到指定目录中，如果你想要全局使用 typikon 程序，那么必须将 typikon 所在的路径添加到计算机操作系统的环境变量中，例如：</p>
+<pre><code class="language-shell">export TYPIKON="/Users/dings/devsoft"
+export PATH=$TYPIKON:$PATH
 </code></pre>
-<p>最记得刷新环境变量，使 typikon 能被正常使用。</p>
+<p>最后刷新环境变量，使 typikon 能被正常使用。</p>
 <hr />
 <h2>快速开始</h2>
 <p>在 typikon 程序中提供了 3 个子命令，分别为 <code>init</code> 用来初始化工作目录， <code>build</code> 用来构建生成静态文件， <code>help</code> 智能化子命令帮助信息提示，当 <code>typikon</code> 主程序运行起来后结果如下：</p>
