@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Typikon Book</title>
+	<meta name="description" content="Typikon name derived from Typikon Book, the a static website rendering tool similar to mdbook and hugo, but it focuses only on rendering markdown into an online book, and is easier to use than the other tools." />
+	<meta name="keywords" content="typikon,book,website,generator,static,html,css,js,theme,rust" />
+	<meta name="generator" content="typikon" />
+	<meta name="template" content="typikon-theme" />
+
+	
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+	
+	<link rel="stylesheet" href="/assets/sidebars.css">
+	
+	<!-- Light theme stylesheet -->
+	<link rel="stylesheet" href="/assets/light-theme.css" id="light-theme">
+	<!-- Dark theme stylesheet (initially disabled) -->
+	<link rel="stylesheet" href="/assets/dark-theme.css" id="dark-theme" disabled>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-sm-12">
+				<div class="flex-shrink-0 p-2" style="width: 100%;">
+					<a href="/index.html"
+						class="d-flex align-items-center justify-content-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+						<span class="fs-4 fw-semibold">Typikon Book</span>
+					</a>
+					<ul class="list-unstyled ps-0">
+						
+						<li class="mb-1">
+							<a class="btn d-inline-flex align-items-center rounded border-0"
+								href="/english/index.html">
+								English
+							</a>
+							<div class="collapse show" id="collapse1">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									
+									<li>
+										<a href="/english/introduce.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											Introduce
+										</a>
+									</li>
+									
+									<li>
+										<a href="/english/quickstart.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											Quick Start
+										</a>
+									</li>
+									
+									<li>
+										<a href="/english/settings.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											Settings
+										</a>
+									</li>
+									
+								</ul>
+							</div>
+						</li>
+						
+						<li class="mb-1">
+							<a class="btn d-inline-flex align-items-center rounded border-0"
+								href="/chinese/index.html">
+								简体中文
+							</a>
+							<div class="collapse show" id="collapse1">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									
+									<li>
+										<a href="/chinese/introduce-zh.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											概述介绍
+										</a>
+									</li>
+									
+									<li>
+										<a href="/chinese/quickstart-zh.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											快速开始
+										</a>
+									</li>
+									
+									<li>
+										<a href="/chinese/settings-zh.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											自定义设置
+										</a>
+									</li>
+									
+								</ul>
+							</div>
+						</li>
+						
+						<li class="border-top my-3"></li>
+						<li class="mb-3 mb-md-0 text-body-secondary">Copyright © Typikon Inc</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-8 col-sm-12">
+				<div id="markdown-content">
+					<h2>快速入门</h2>
+<p>如果想使用 typikon 程序，必须先将 typikon 程序安装到你的计算机中，安装过程中根据自己的计算机版本找到对应的二进制安装包，安装包可以再 <a href="">release</a> 页面中找到，并下载 typikon 的二进制压缩包到你计算机中。</p>
+<blockquote>
+<p>在使用 typikon 程序之前请确保你计算机已经成功连接到国际互联网，如果是中国大陆地区可能会出现无法创建工作目录的情况，如果出现此类问题，可以尝试使用加速或者开启代理软件，再使用 typikon 进行目录初始化工作。</p>
+</blockquote>
+<p>当下载好 zip 二进制软件包后，请使用 <code>unzip</code> 或者其他解压软件来解压 <code>typikon-darwin-x64-beta-v0.1.1.zip</code> 软件包，命令如下：</p>
+<pre><code class="language-shell">unzip typikon-darwin-x64-beta-v0.1.1.zip -d /usr/local/typikon
+</code></pre>
+<p>再通过手动解压二进制到指定目录中，如果你想要全局使用 typikon 程序，那么必须将 typikon 所在的路径添加到计算机操作系统的环境变量中，例如：</p>
+<pre><code class="language-shell">TYPIKON="/usr/local/typikon"
+export TYPIKON
+</code></pre>
+<p>最记得刷新环境变量，使 typikon 能被正常使用。</p>
+<hr />
+<h2>快速开始</h2>
+<p>在 typikon 程序中提供了 3 个子命令，分别为 <code>init</code> 用来初始化工作目录， <code>build</code> 用来构建生成静态文件， <code>help</code> 智能化子命令帮助信息提示，当 <code>typikon</code> 主程序运行起来后结果如下：</p>
+<pre><code class="language-shell">$: typikon
+  _             _ _
+ | |_ _  _ _ __(_) |_____ _ _
+ |  _| || | '_ \ | / / _ \ ' \
+  \__|\_, | .__/_|_\_\___/_||_|
+      |__/|_|     v0.1.1-beta
+
+Typikon lets you use markdown to write your online books.
+GitHub: http://typikonbook.github.io  License: Apache2.0
+
+
+Usage: typikon &lt;command&gt; [&lt;args&gt;...]
+
+The commands are:
+
+    init      Initialize to working directory
+    build     Builder static html file and output to book
+
+Use typikon help &lt;command&gt; for more information about a command.
+</code></pre>
+<p>在编写你的书籍资料之前，需要一个干净的目录作为 <code>typikon</code> 的工作目录，执行以下命令可以创建新的目录并且初始化为工作目录：</p>
+<pre><code class="language-shell">$: mkdir example &amp;&amp; cd example &amp;&amp; typikon init
+</code></pre>
+<p>当初始化完成之后，默认的工作目录就为 <code>example</code> 目录，在 <code>example</code> 目录中有几个关键的子目录和文件，我们只关注 <code>settings.yml</code> 文件和 <code>root.yml</code> 文件。在 <code>root.yml</code> 文件中编写 markdown 文件到书籍目录的映射关系，
+例如下面：</p>
+<pre><code class="language-yaml"># Book root path mapping file
+root:
+  index: "index.md"
+  chapters:
+    - title: "English"
+      index: "english.md"
+      # Sub chapters root
+      sub_chapters:
+        - title: "Introduce"
+          path: "introduce.md"
+        - title: "Quick Start"
+          path: "quickstart.md"
+        - title: "Settings"
+          path: "settings.md"
+      # Sub chapters root
+    - title: "简体中文"
+      index: "chinese.md"
+      sub_chapters:
+        # Chapter content
+        - title: "概述介绍"
+          path: "introduce-zh.md"
+        - title: "快速开始"
+          path: "quickstart-zh.md"
+        - title: "自定义设置"
+          path: "settings-zh.md"
+
+</code></pre>
+<p>而 <code>markdown</code> 文件默认存储在 <code>example/book</code> 目录中，你目前所阅读这个页面就是通过此种方式生成渲染的。</p>
+<hr />
+<h3>部署文件</h3>
+<p>如何部署渲染的静态文件，默认被渲染成功之后的存储存储在 <code>example/docs</code> 目录中，只需要在将该目录上传到 GitHub Pages 和 Cloudflare Pages 中部署就可以通过域名访问，如果在本地测试，可以使用 <code>live-server</code> 程序提供本地静态服务器来访问，例如命令：</p>
+<pre><code class="language-shell">$: typikon build
+
+  _             _ _
+ | |_ _  _ _ __(_) |_____ _ _
+ |  _| || | '_ \ | / / _ \ ' \
+  \__|\_, | .__/_|_\_\___/_||_|
+      |__/|_|     v0.1.1-beta
+
+Typikon lets you use markdown to write your online books.
+GitHub: http://typikonbook.github.io  License: Apache2.0
+
+[INFO]   2024/07/04 00:43:24 💬 Clean up output directory "docs" successful
+[INFO]   2024/07/04 00:43:24 💬 New create output directory "docs" successful
+[INFO]   2024/07/04 00:43:24 💬 Building static assets "docs/assets" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/index.html" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/english.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/chinese.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Folder created "docs/english" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/english/index.html" successful
+[INFO]   2024/07/04 00:43:24 💬 Folder created "docs/chinese" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/chinese/index.html" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/introduce.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/quickstart.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/settings.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/introduce-zh.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/quickstart-zh.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/settings-zh.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/english/introduce" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/english/quickstart" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/english/settings" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/chinese/introduce-zh" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/chinese/quickstart-zh" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/chinese/settings-zh" successful
+[INFO]   2024/07/04 00:43:24 💬 Rendering of static resource files complete 🎉
+</code></pre>
+<pre><code class="language-shell">$: live-server docs
+Serving "docs" at http://127.0.0.1:8080
+Ready for changes
+</code></pre>
+<p>访问 <code>http://127.0.0.1:8080</code> 就可以预览到网站。</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/assets/highlight/highlight.min.js"></script>
+	<script src="/assets/highlight/languages/shell.min.js"></script>
+	<script src="/assets/highlight/languages/sql.min.js"></script>
+	<script src="/assets/highlight/languages/java.min.js"></script>
+	<script src="/assets/highlight/languages/rust.min.js"></script>
+	<script src="/assets/highlight/languages/javascript.min.js"></script>
+	<script src="/assets/highlight/languages/c.min.js"></script>
+	<script src="/assets/highlight/languages/cpp.min.js"></script>
+	<script src="/assets/highlight/languages/kotlin.min.js"></script>
+	<script src="/assets/highlight/languages/rust.min.js"></script>
+	<script src="/assets/highlight/languages/python.min.js"></script>
+	<script src="/assets/highlight/languages/csharp.min.js"></script>
+	<script src="/assets/highlight/languages/css.min.js"></script>
+	<script src="/assets/highlight/languages/swift.min.js"></script>
+	<script src="/assets/highlight/languages/xml.min.js"></script>
+	<script src="/assets/highlight/languages/yaml.min.js"></script>
+	<script src="/assets/highlight/languages/ruby.min.js"></script>
+	<script src="/assets/highlight/languages/php.min.js"></script>
+	<script src="/assets/highlight/languages/go.min.js"></script>
+	<script src="/assets/highlight/languages/dart.min.js"></script>
+	<script src="/assets/highlight/languages/bash.min.js"></script>
+	<script src="/assets/highlight/languages/dockerfile.min.js"></script>
+
+	
+	<script src="/assets/js/bootstrap.min.js"></script>
+	
+	<script src="/assets/js/bootstrap.bundle.js"></script>
+	
+
+	<script>
+		document.addEventListener('DOMContentLoaded', (event) => {
+
+			const darkThemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+			const lightThemeLink = document.getElementById('light-theme');
+			const darkThemeLink = document.getElementById('dark-theme');
+
+			changeTheme = (mediaQuery) => {
+				if (mediaQuery.matches) {
+					// Dark mode
+					lightThemeLink.setAttribute('disabled', true);
+					darkThemeLink.removeAttribute('disabled');
+				} else {
+					// Light mode
+					darkThemeLink.setAttribute('disabled', true);
+					lightThemeLink.removeAttribute('disabled');
+				}
+			};
+
+			// Initial check
+			changeTheme(darkThemeMediaQuery);
+
+			// Listen for changes in OS theme
+			darkThemeMediaQuery.addListener(changeTheme);
+
+
+			// 初始化 highlight.js
+			document.querySelectorAll('pre code').forEach((block) => {
+				hljs.highlightElement(block);
+			});
+
+			// 添加自定义 md-p 样式
+			var markdownContent = document.getElementById('markdown-content');
+			if (markdownContent) {
+				var paragraphs = markdownContent.querySelectorAll('p');
+				paragraphs.forEach(function (paragraph) {
+					paragraph.classList.add('md-p');
+				});
+			}
+
+		});
+
+		// 监听系统主题切换操作
+		window.onload = () => {
+			const darkThemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+			const lightThemeLink = document.getElementById('light-theme');
+			const darkThemeLink = document.getElementById('dark-theme');
+
+			changeTheme = (mediaQuery) => {
+				if (mediaQuery.matches) {
+					// Dark mode
+					lightThemeLink.setAttribute('disabled', true);
+					darkThemeLink.removeAttribute('disabled');
+				} else {
+					// Light mode
+					darkThemeLink.setAttribute('disabled', true);
+					lightThemeLink.removeAttribute('disabled');
+				}
+			};
+
+			// Initial check
+			changeTheme(darkThemeMediaQuery);
+
+			// Listen for changes in OS theme
+			darkThemeMediaQuery.addListener(changeTheme);
+		};
+	</script>
+
+</body>
+
+</html>

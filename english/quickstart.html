@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Typikon Book</title>
+	<meta name="description" content="Typikon name derived from Typikon Book, the a static website rendering tool similar to mdbook and hugo, but it focuses only on rendering markdown into an online book, and is easier to use than the other tools." />
+	<meta name="keywords" content="typikon,book,website,generator,static,html,css,js,theme,rust" />
+	<meta name="generator" content="typikon" />
+	<meta name="template" content="typikon-theme" />
+
+	
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+	
+	<link rel="stylesheet" href="/assets/sidebars.css">
+	
+	<!-- Light theme stylesheet -->
+	<link rel="stylesheet" href="/assets/light-theme.css" id="light-theme">
+	<!-- Dark theme stylesheet (initially disabled) -->
+	<link rel="stylesheet" href="/assets/dark-theme.css" id="dark-theme" disabled>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-sm-12">
+				<div class="flex-shrink-0 p-2" style="width: 100%;">
+					<a href="/index.html"
+						class="d-flex align-items-center justify-content-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+						<span class="fs-4 fw-semibold">Typikon Book</span>
+					</a>
+					<ul class="list-unstyled ps-0">
+						
+						<li class="mb-1">
+							<a class="btn d-inline-flex align-items-center rounded border-0"
+								href="/english/index.html">
+								English
+							</a>
+							<div class="collapse show" id="collapse1">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									
+									<li>
+										<a href="/english/introduce.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											Introduce
+										</a>
+									</li>
+									
+									<li>
+										<a href="/english/quickstart.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											Quick Start
+										</a>
+									</li>
+									
+									<li>
+										<a href="/english/settings.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											Settings
+										</a>
+									</li>
+									
+								</ul>
+							</div>
+						</li>
+						
+						<li class="mb-1">
+							<a class="btn d-inline-flex align-items-center rounded border-0"
+								href="/chinese/index.html">
+								简体中文
+							</a>
+							<div class="collapse show" id="collapse1">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									
+									<li>
+										<a href="/chinese/introduce-zh.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											概述介绍
+										</a>
+									</li>
+									
+									<li>
+										<a href="/chinese/quickstart-zh.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											快速开始
+										</a>
+									</li>
+									
+									<li>
+										<a href="/chinese/settings-zh.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											自定义设置
+										</a>
+									</li>
+									
+								</ul>
+							</div>
+						</li>
+						
+						<li class="border-top my-3"></li>
+						<li class="mb-3 mb-md-0 text-body-secondary">Copyright © Typikon Inc</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-8 col-sm-12">
+				<div id="markdown-content">
+					<h2>Quick Start</h2>
+<p>To use the Typikon program, you must first install Typikon on your computer. During the installation process, download the appropriate binary package for your computer’s version from the <a href="">release page</a>. Once you have downloaded the Typikon binary zip package to your computer:</p>
+<blockquote>
+<p>Before using Typikon, ensure that your computer is successfully connected to the international internet. If you are in mainland China, you may encounter issues creating a working directory. If this happens, try using acceleration or enabling proxy software before using Typikon to initialize the directory.</p>
+</blockquote>
+<p>After downloading the zip binary package, unzip it using <code>unzip</code> or another decompression software. For example:</p>
+<pre><code class="language-shell">unzip typikon-darwin-x64-beta-v0.1.1.zip -d /usr/local/typikon
+</code></pre>
+<p>Then manually extract the binaries to the specified directory. If you want to use the Typikon program globally, you must add the path where Typikon is located to the environment variables of your computer’s operating system. For example:</p>
+<pre><code class="language-shell">TYPIKON="/usr/local/typikon"
+export TYPIKON
+</code></pre>
+<p>Remember to refresh the environment variables to ensure that Typikon can be used properly.</p>
+<hr />
+<h2>Getting Started</h2>
+<p>Typikon provides three main commands: init to initialize the working directory, build to generate static HTML files, and help to provide command-specific help information. When you run the typikon main program, it will display the following:</p>
+<pre><code class="language-shell">$: typikon
+  _             _ _
+ | |_ _  _ _ __(_) |_____ _ _
+ |  _| || | '_ \ | / / _ \ ' \
+  \__|\_, | .__/_|_\_\___/_||_|
+      |__/|_|     v0.1.1-beta
+
+Typikon lets you use markdown to write your online books.
+GitHub: http://typikonbook.github.io  License: Apache2.0
+
+
+Usage: typikon &lt;command&gt; [&lt;args&gt;...]
+
+The commands are:
+
+    init      Initialize to working directory
+    build     Builder static html file and output to book
+
+Use typikon help &lt;command&gt; for more information about a command.
+</code></pre>
+<p>Before you start writing your book content, you need a clean directory to serve as the Typikon working directory. Execute the following command to create a new directory and initialize it:</p>
+<pre><code class="language-shell">$: mkdir example &amp;&amp; cd example &amp;&amp; typikon init
+</code></pre>
+<p>After initialization, the default working directory is example. Inside example, you will find several key subdirectories and files, but the most important are settings.yml and root.yml. In root.yml, you map your Markdown files to chapters in your book directory. For example:</p>
+<pre><code class="language-yaml"># Book root path mapping file
+root:
+  index: "index.md"
+  chapters:
+    - title: "English"
+      index: "english.md"
+      # Sub chapters root
+      sub_chapters:
+        - title: "Introduce"
+          path: "introduce.md"
+        - title: "Quick Start"
+          path: "quickstart.md"
+        - title: "Settings"
+          path: "settings.md"
+      # Sub chapters root
+    - title: "简体中文"
+      index: "chinese.md"
+      sub_chapters:
+        # Chapter content
+        - title: "概述介绍"
+          path: "introduce-zh.md"
+        - title: "快速开始"
+          path: "quickstart-zh.md"
+        - title: "自定义设置"
+          path: "settings-zh.md"
+
+</code></pre>
+<p>Markdown files are stored by default in the <code>example/book</code> directory. The page you are currently reading is generated and rendered using this method.</p>
+<hr />
+<h3>Deployment</h3>
+<p>To deploy the rendered static files, which are by default stored in the <code>example/docs</code> directory after successful rendering, follow these steps to host them on <code>GitHub Pages</code> or <code>Cloudflare Pages</code>. If testing locally, you can use the live-server program to serve the static files locally.</p>
+<pre><code class="language-shell">$: typikon build
+
+  _             _ _
+ | |_ _  _ _ __(_) |_____ _ _
+ |  _| || | '_ \ | / / _ \ ' \
+  \__|\_, | .__/_|_\_\___/_||_|
+      |__/|_|     v0.1.1-beta
+
+Typikon lets you use markdown to write your online books.
+GitHub: http://typikonbook.github.io  License: Apache2.0
+
+[INFO]   2024/07/04 00:43:24 💬 Clean up output directory "docs" successful
+[INFO]   2024/07/04 00:43:24 💬 New create output directory "docs" successful
+[INFO]   2024/07/04 00:43:24 💬 Building static assets "docs/assets" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/index.html" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/english.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/chinese.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Folder created "docs/english" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/english/index.html" successful
+[INFO]   2024/07/04 00:43:24 💬 Folder created "docs/chinese" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/chinese/index.html" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/introduce.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/quickstart.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/settings.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/introduce-zh.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/quickstart-zh.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Loading markdown file "book/settings-zh.md" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/english/introduce" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/english/quickstart" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/english/settings" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/chinese/introduce-zh" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/chinese/quickstart-zh" successful
+[INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/chinese/settings-zh" successful
+[INFO]   2024/07/04 00:43:24 💬 Rendering of static resource files complete 🎉
+</code></pre>
+<p>If you want to preview your website locally before deployment, use <code>live-server</code> to set up a local static server. Here’s how to run <code>live-server</code> :</p>
+<pre><code class="language-shell">$: live-server docs
+Serving "docs" at http://127.0.0.1:8080
+Ready for changes
+</code></pre>
+<p>Navigate to <code>http://127.0.0.1:8080</code> in your web browser to preview your website locally.</p>
+<p>This setup allows you to deploy your static website to a hosting service or test it locally using live-server for immediate feedback.</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/assets/highlight/highlight.min.js"></script>
+	<script src="/assets/highlight/languages/shell.min.js"></script>
+	<script src="/assets/highlight/languages/sql.min.js"></script>
+	<script src="/assets/highlight/languages/java.min.js"></script>
+	<script src="/assets/highlight/languages/rust.min.js"></script>
+	<script src="/assets/highlight/languages/javascript.min.js"></script>
+	<script src="/assets/highlight/languages/c.min.js"></script>
+	<script src="/assets/highlight/languages/cpp.min.js"></script>
+	<script src="/assets/highlight/languages/kotlin.min.js"></script>
+	<script src="/assets/highlight/languages/rust.min.js"></script>
+	<script src="/assets/highlight/languages/python.min.js"></script>
+	<script src="/assets/highlight/languages/csharp.min.js"></script>
+	<script src="/assets/highlight/languages/css.min.js"></script>
+	<script src="/assets/highlight/languages/swift.min.js"></script>
+	<script src="/assets/highlight/languages/xml.min.js"></script>
+	<script src="/assets/highlight/languages/yaml.min.js"></script>
+	<script src="/assets/highlight/languages/ruby.min.js"></script>
+	<script src="/assets/highlight/languages/php.min.js"></script>
+	<script src="/assets/highlight/languages/go.min.js"></script>
+	<script src="/assets/highlight/languages/dart.min.js"></script>
+	<script src="/assets/highlight/languages/bash.min.js"></script>
+	<script src="/assets/highlight/languages/dockerfile.min.js"></script>
+
+	
+	<script src="/assets/js/bootstrap.min.js"></script>
+	
+	<script src="/assets/js/bootstrap.bundle.js"></script>
+	
+
+	<script>
+		document.addEventListener('DOMContentLoaded', (event) => {
+
+			const darkThemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+			const lightThemeLink = document.getElementById('light-theme');
+			const darkThemeLink = document.getElementById('dark-theme');
+
+			changeTheme = (mediaQuery) => {
+				if (mediaQuery.matches) {
+					// Dark mode
+					lightThemeLink.setAttribute('disabled', true);
+					darkThemeLink.removeAttribute('disabled');
+				} else {
+					// Light mode
+					darkThemeLink.setAttribute('disabled', true);
+					lightThemeLink.removeAttribute('disabled');
+				}
+			};
+
+			// Initial check
+			changeTheme(darkThemeMediaQuery);
+
+			// Listen for changes in OS theme
+			darkThemeMediaQuery.addListener(changeTheme);
+
+
+			// 初始化 highlight.js
+			document.querySelectorAll('pre code').forEach((block) => {
+				hljs.highlightElement(block);
+			});
+
+			// 添加自定义 md-p 样式
+			var markdownContent = document.getElementById('markdown-content');
+			if (markdownContent) {
+				var paragraphs = markdownContent.querySelectorAll('p');
+				paragraphs.forEach(function (paragraph) {
+					paragraph.classList.add('md-p');
+				});
+			}
+
+		});
+
+		// 监听系统主题切换操作
+		window.onload = () => {
+			const darkThemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+			const lightThemeLink = document.getElementById('light-theme');
+			const darkThemeLink = document.getElementById('dark-theme');
+
+			changeTheme = (mediaQuery) => {
+				if (mediaQuery.matches) {
+					// Dark mode
+					lightThemeLink.setAttribute('disabled', true);
+					darkThemeLink.removeAttribute('disabled');
+				} else {
+					// Light mode
+					darkThemeLink.setAttribute('disabled', true);
+					lightThemeLink.removeAttribute('disabled');
+				}
+			};
+
+			// Initial check
+			changeTheme(darkThemeMediaQuery);
+
+			// Listen for changes in OS theme
+			darkThemeMediaQuery.addListener(changeTheme);
+		};
+	</script>
+
+</body>
+
+</html>

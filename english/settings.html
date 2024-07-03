@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Typikon Book</title>
+	<meta name="description" content="Typikon name derived from Typikon Book, the a static website rendering tool similar to mdbook and hugo, but it focuses only on rendering markdown into an online book, and is easier to use than the other tools." />
+	<meta name="keywords" content="typikon,book,website,generator,static,html,css,js,theme,rust" />
+	<meta name="generator" content="typikon" />
+	<meta name="template" content="typikon-theme" />
+
+	
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+	
+	<link rel="stylesheet" href="/assets/sidebars.css">
+	
+	<!-- Light theme stylesheet -->
+	<link rel="stylesheet" href="/assets/light-theme.css" id="light-theme">
+	<!-- Dark theme stylesheet (initially disabled) -->
+	<link rel="stylesheet" href="/assets/dark-theme.css" id="dark-theme" disabled>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-sm-12">
+				<div class="flex-shrink-0 p-2" style="width: 100%;">
+					<a href="/index.html"
+						class="d-flex align-items-center justify-content-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+						<span class="fs-4 fw-semibold">Typikon Book</span>
+					</a>
+					<ul class="list-unstyled ps-0">
+						
+						<li class="mb-1">
+							<a class="btn d-inline-flex align-items-center rounded border-0"
+								href="/english/index.html">
+								English
+							</a>
+							<div class="collapse show" id="collapse1">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									
+									<li>
+										<a href="/english/introduce.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											Introduce
+										</a>
+									</li>
+									
+									<li>
+										<a href="/english/quickstart.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											Quick Start
+										</a>
+									</li>
+									
+									<li>
+										<a href="/english/settings.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											Settings
+										</a>
+									</li>
+									
+								</ul>
+							</div>
+						</li>
+						
+						<li class="mb-1">
+							<a class="btn d-inline-flex align-items-center rounded border-0"
+								href="/chinese/index.html">
+								简体中文
+							</a>
+							<div class="collapse show" id="collapse1">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									
+									<li>
+										<a href="/chinese/introduce-zh.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											概述介绍
+										</a>
+									</li>
+									
+									<li>
+										<a href="/chinese/quickstart-zh.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											快速开始
+										</a>
+									</li>
+									
+									<li>
+										<a href="/chinese/settings-zh.html"
+											class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+											自定义设置
+										</a>
+									</li>
+									
+								</ul>
+							</div>
+						</li>
+						
+						<li class="border-top my-3"></li>
+						<li class="mb-3 mb-md-0 text-body-secondary">Copyright © Typikon Inc</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-8 col-sm-12">
+				<div id="markdown-content">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/assets/highlight/highlight.min.js"></script>
+	<script src="/assets/highlight/languages/shell.min.js"></script>
+	<script src="/assets/highlight/languages/sql.min.js"></script>
+	<script src="/assets/highlight/languages/java.min.js"></script>
+	<script src="/assets/highlight/languages/rust.min.js"></script>
+	<script src="/assets/highlight/languages/javascript.min.js"></script>
+	<script src="/assets/highlight/languages/c.min.js"></script>
+	<script src="/assets/highlight/languages/cpp.min.js"></script>
+	<script src="/assets/highlight/languages/kotlin.min.js"></script>
+	<script src="/assets/highlight/languages/rust.min.js"></script>
+	<script src="/assets/highlight/languages/python.min.js"></script>
+	<script src="/assets/highlight/languages/csharp.min.js"></script>
+	<script src="/assets/highlight/languages/css.min.js"></script>
+	<script src="/assets/highlight/languages/swift.min.js"></script>
+	<script src="/assets/highlight/languages/xml.min.js"></script>
+	<script src="/assets/highlight/languages/yaml.min.js"></script>
+	<script src="/assets/highlight/languages/ruby.min.js"></script>
+	<script src="/assets/highlight/languages/php.min.js"></script>
+	<script src="/assets/highlight/languages/go.min.js"></script>
+	<script src="/assets/highlight/languages/dart.min.js"></script>
+	<script src="/assets/highlight/languages/bash.min.js"></script>
+	<script src="/assets/highlight/languages/dockerfile.min.js"></script>
+
+	
+	<script src="/assets/js/bootstrap.min.js"></script>
+	
+	<script src="/assets/js/bootstrap.bundle.js"></script>
+	
+
+	<script>
+		document.addEventListener('DOMContentLoaded', (event) => {
+
+			const darkThemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+			const lightThemeLink = document.getElementById('light-theme');
+			const darkThemeLink = document.getElementById('dark-theme');
+
+			changeTheme = (mediaQuery) => {
+				if (mediaQuery.matches) {
+					// Dark mode
+					lightThemeLink.setAttribute('disabled', true);
+					darkThemeLink.removeAttribute('disabled');
+				} else {
+					// Light mode
+					darkThemeLink.setAttribute('disabled', true);
+					lightThemeLink.removeAttribute('disabled');
+				}
+			};
+
+			// Initial check
+			changeTheme(darkThemeMediaQuery);
+
+			// Listen for changes in OS theme
+			darkThemeMediaQuery.addListener(changeTheme);
+
+
+			// 初始化 highlight.js
+			document.querySelectorAll('pre code').forEach((block) => {
+				hljs.highlightElement(block);
+			});
+
+			// 添加自定义 md-p 样式
+			var markdownContent = document.getElementById('markdown-content');
+			if (markdownContent) {
+				var paragraphs = markdownContent.querySelectorAll('p');
+				paragraphs.forEach(function (paragraph) {
+					paragraph.classList.add('md-p');
+				});
+			}
+
+		});
+
+		// 监听系统主题切换操作
+		window.onload = () => {
+			const darkThemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+			const lightThemeLink = document.getElementById('light-theme');
+			const darkThemeLink = document.getElementById('dark-theme');
+
+			changeTheme = (mediaQuery) => {
+				if (mediaQuery.matches) {
+					// Dark mode
+					lightThemeLink.setAttribute('disabled', true);
+					darkThemeLink.removeAttribute('disabled');
+				} else {
+					// Light mode
+					darkThemeLink.setAttribute('disabled', true);
+					lightThemeLink.removeAttribute('disabled');
+				}
+			};
+
+			// Initial check
+			changeTheme(darkThemeMediaQuery);
+
+			// Listen for changes in OS theme
+			darkThemeMediaQuery.addListener(changeTheme);
+		};
+	</script>
+
+</body>
+
+</html>
