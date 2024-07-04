@@ -114,10 +114,11 @@
 <p>在使用 typikon 程序之前请确保你计算机已经成功连接到国际互联网，如果是中国大陆地区可能会出现无法创建工作目录的情况，如果出现此类问题，可以尝试使用加速或者开启代理软件，再使用 typikon 进行目录初始化工作。</p>
 </blockquote>
 <p>当下载好 zip 二进制软件包后，请使用 <code>unzip</code> 或者其他解压软件来解压 <code>typikon-darwin-x64-beta-v0.1.1.zip</code> 软件包，命令如下：</p>
-<pre><code class="language-shell">unzip typikon-darwin-x64-beta-v0.1.1.zip -d /Users/dings/devsoft
+<pre><code class="language-shell">unzip typikon-darwin-x64-beta-v0.1.1.zip -d /usr/local/bin
+chmod +x /usr/local/bin/typikon
 </code></pre>
 <p>通过手动解压二进制到指定目录中，如果你想要全局使用 typikon 程序，那么必须将 typikon 所在的路径添加到计算机操作系统的环境变量中，例如：</p>
-<pre><code class="language-shell">export TYPIKON="/Users/dings/devsoft"
+<pre><code class="language-shell">export TYPIKON="/usr/local/bin"
 export PATH=$TYPIKON:$PATH
 </code></pre>
 <p>最后刷新环境变量，使 typikon 能被正常使用。</p>
@@ -176,7 +177,7 @@ root:
           path: "settings-zh.md"
 
 </code></pre>
-<p>而 <code>markdown</code> 文件默认存储在 <code>example/book</code> 目录中，你目前所阅读这个页面就是通过此种方式生成渲染的。</p>
+<p>源 <code>markdown</code> 文件默认存储在 <code>example/book</code> 目录中，你目前所阅读这个页面就是通过此种方式生成渲染的。</p>
 <hr />
 <h3>部署文件</h3>
 <p>如何部署渲染的静态文件，默认被渲染成功之后的存储存储在 <code>example/docs</code> 目录中，只需要在将该目录上传到 GitHub Pages 和 Cloudflare Pages 中部署就可以通过域名访问，如果在本地测试，可以使用 <code>live-server</code> 程序提供本地静态服务器来访问，例如命令：</p>
@@ -215,7 +216,8 @@ GitHub: http://typikonbook.github.io  License: Apache2.0
 [INFO]   2024/07/04 00:43:24 💬 Data written to file "docs/chinese/settings-zh" successful
 [INFO]   2024/07/04 00:43:24 💬 Rendering of static resource files complete 🎉
 </code></pre>
-<p>使用本地服务器 <code>live-server</code> 来测试生成静态网站：</p>
+<p>目前 typikon 程序没有内置静态文件服务器，会在未来的新版本添加支持；
+可以使用本地服务器 <code>live-server</code> 来测试生成静态网站：</p>
 <pre><code class="language-shell">$: live-server docs
 Serving "docs" at http://127.0.0.1:8080
 Ready for changes
