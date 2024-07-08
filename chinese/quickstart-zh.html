@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>Typikon Book</title>
-	<meta name="description" content="Typikon name derived from Typikon Book, the a static website rendering tool similar to mdbook and hugo, but it focuses only on rendering markdown into an online book, and is easier to use than the other tools." />
+	<meta name="description" content="Typikon name derived from Typikon Book, the a static website rendering tool similar to mdbook and hugo, but it focuses only on rendering markdown into an online book, and is easier to use than the other tools.
+" />
 	<meta name="keywords" content="typikon,book,website,generator,static,html,css,js,theme,rust" />
 	<meta name="generator" content="typikon" />
 	<meta name="template" content="typikon-theme" />
@@ -14,12 +15,14 @@
 	
 	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 	
-	<link rel="stylesheet" href="/assets/sidebars.css">
+	<link rel="stylesheet" href="/assets/typikon.css">
 	
 	<!-- Light theme stylesheet -->
 	<link rel="stylesheet" href="/assets/light-theme.css" id="light-theme">
 	<!-- Dark theme stylesheet (initially disabled) -->
 	<link rel="stylesheet" href="/assets/dark-theme.css" id="dark-theme" disabled>
+
+	<link rel="icon" href="/assets/icon.png" type="image/png">
 
 </head>
 
@@ -124,13 +127,14 @@ export PATH=$TYPIKON:$PATH
 <p>最后刷新环境变量，使 typikon 能被正常使用。</p>
 <hr />
 <h2>快速开始</h2>
-<p>在 typikon 程序中提供了 3 个子命令，分别为 <code>init</code> 用来初始化工作目录， <code>build</code> 用来构建生成静态文件， <code>help</code> 智能化子命令帮助信息提示，当 <code>typikon</code> 主程序运行起来后结果如下：</p>
+<p>在 typikon 程序中提供了 4 个子命令，分别为 <code>init</code> 用来初始化工作目录， <code>build</code> 用来构建生成静态文件，<code>serve</code> 用来启动静态 HTTP 服务器提供预览功能， <code>help</code> 智能化子命令帮助信息提示，当 <code>typikon</code> 主程序运行起来后结果如下：</p>
 <pre><code class="language-shell">$: typikon
+
   _             _ _
  | |_ _  _ _ __(_) |_____ _ _
  |  _| || | '_ \ | / / _ \ ' \
   \__|\_, | .__/_|_\_\___/_||_|
-      |__/|_|     v0.1.1-beta
+      |__/|_|     v0.1.2
 
 Typikon lets you use markdown to write your online books.
 GitHub: http://typikonbook.github.io  License: Apache2.0
@@ -141,15 +145,16 @@ Usage: typikon &lt;command&gt; [&lt;args&gt;...]
 The commands are:
 
     init      Initialize to working directory
+    serve     Serve starting the static http server
     build     Builder static html file and output to book
 
 Use typikon help &lt;command&gt; for more information about a command.
+
 </code></pre>
 <p>在编写你的书籍资料之前，需要一个干净的目录作为 <code>typikon</code> 的工作目录，执行以下命令可以创建新的目录并且初始化为工作目录：</p>
 <pre><code class="language-shell">$: mkdir example &amp;&amp; cd example &amp;&amp; typikon init
 </code></pre>
-<p>当初始化完成之后，默认的工作目录就为 <code>example</code> 目录，在 <code>example</code> 目录中有几个关键的子目录和文件，我们只关注 <code>settings.yml</code> 文件和 <code>root.yml</code> 文件。在 <code>root.yml</code> 文件中编写 markdown 文件到书籍目录的映射关系，
-例如下面：</p>
+<p>当初始化完成之后，默认的工作目录就为 <code>example</code> 目录，在 <code>example</code> 目录中有几个关键的子目录和文件，我们只关注 <code>settings.yml</code> 文件和 <code>root.yml</code> 文件。在 <code>root.yml</code> 文件中编写 markdown 文件到书籍目录的映射关系，例如下面：</p>
 <pre><code class="language-yaml"># Book root path mapping file
 root:
   index: "index.md"
@@ -223,6 +228,20 @@ Serving "docs" at http://127.0.0.1:8080
 Ready for changes
 </code></pre>
 <p>访问 <code>http://127.0.0.1:8080</code> 就可以预览到网站。</p>
+<hr />
+<h2>内置服务</h2>
+<p>在新版本 <code>v0.1.2</code> 版本之后已经内置了 HTTP 静态服务器，可以提供预览功能，使用 <code>serve</code> 目录就可以启动静态 HTTP 服务器，默认监听端口为 <code>2478</code> ，浏览器访问 <code>http://127.0.0.1:2478</code> ：</p>
+<pre><code class="language-shell">  _             _ _
+ | |_ _  _ _ __(_) |_____ _ _
+ |  _| || | '_ \ | / / _ \ ' \
+  \__|\_, | .__/_|_\_\___/_||_|
+      |__/|_|     v0.1.2
+
+Typikon lets you use markdown to write your online books.
+GitHub: http://typikonbook.github.io  License: Apache2.0
+
+[INFO]   2024/07/08 14:32:04 💬 Starting HTTP server on port 2478
+</code></pre>
 
 				</div>
 			</div>
